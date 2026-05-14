@@ -22,10 +22,7 @@ const Home = () => {
     { id: 'children', name: 'Kids', icon: '🧒' }
   ];
 
-  useEffect(() => {
-    loadProducts();
-  }, [selectedCategory]);
-
+ 
   const loadProducts = async () => {
     setLoading(true);
     try {
@@ -67,7 +64,26 @@ const Home = () => {
       </div>
     );
   }
+const filteredProducts = shoesProducts.filter((product) => {
+  if (selectedCategory === 'all') return true;
 
+  if (
+    selectedCategory === 'men' &&
+    product.category === 'Men Shoes'
+  ) return true;
+
+  if (
+    selectedCategory === 'women' &&
+    product.category === 'Women Shoes'
+  ) return true;
+
+  if (
+    selectedCategory === 'children' &&
+    product.category === 'Kids Shoes'
+  ) return true;
+
+  return false;
+});
   return (
     <div className="ds-page">
       <PageBanner
@@ -127,7 +143,7 @@ const Home = () => {
         styles
       </p>
 
-      {products.length === 0 ? (
+      {filteredProducts.length === 0 ? (
         <div className="ds-empty ds-panel ds-panel--padding">
           <p>No shoes match this filter.</p>
         </div>

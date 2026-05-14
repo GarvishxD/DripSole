@@ -3,13 +3,9 @@ import ProductCard from './ProductCard';
 import { productsAPI } from '../../services/api';
 
 const ProductList = ({ onAddToCart }) => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  
 
-  useEffect(() => {
-    loadProducts();
-  }, []);
+  
 
   const loadProducts = async () => {
     try {
