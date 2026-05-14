@@ -1,0 +1,17 @@
+{
+  "buildCommand": "cd frontend && npm run build && cd ../backend",
+  "outputDirectory": "backend",
+  "framework": "express",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "env": {
+    "MONGO_URI": "@MONGO_URI",
+    "ADMIN_EMAIL": "@ADMIN_EMAIL",
+    "ADMIN_PASSWORD": "@ADMIN_PASSWORD",
+    "JWT_SECRET": "@JWT_SECRET"
+  }
+}

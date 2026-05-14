@@ -22,6 +22,10 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// ================== SERVE STATIC FILES (React Frontend) ==================
+const frontendBuildPath = path.join(__dirname, '../frontend/build');
+app.use(express.static(frontendBuildPath));
+
 // ================== TEST ROUTE ==================
 app.get('/', (req, res) => {
   res.json({ message: 'DripSole Backend is working with MongoDB!' });
@@ -237,6 +241,11 @@ app.put('/api/admin/orders/:id', authenticateToken, async (req, res) => {
   );
 
   res.json(order);
+});
+
+// ================== CATCH-ALL ROUTE FOR REACT ==================
+app.get('*', (req, res) => {
+  res.sendFile(path.join(frontendBuildPath, 'index.html'));
 });
 
 // ================== START SERVER ==================
