@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../context/ToastContext';
-import { getProductImage } from '../utils/productImages';
 const AdminPanel = () => {
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
