@@ -1,5 +1,3 @@
-import { getProductImage } from '../utils/productImages';
-import { shoesProducts } from '../utils/productImages';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { productsAPI } from '../services/api';
@@ -22,16 +20,22 @@ const Home = () => {
     { id: 'children', name: 'Kids', icon: '🧒' }
   ];
 
- 
+  useEffect(() => {
+    loadProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategory]);
+
   const loadProducts = async () => {
     setLoading(true);
     try {
-      const filters = { type: 'shoes' };
+      const filters = { type: 'Shoes' };
       if (selectedCategory !== 'all') {
         filters.category = selectedCategory;
       }
       const response = await productsAPI.getAll(filters);
-      setProducts(response.data);
+      // Handle both new and old response formats
+      const productsData = response.data?.data || response.data || [];
+      setProducts(Array.isArray(productsData) ? productsData : []);
       setError('');
     } catch (err) {
       console.error('Error loading products:', err);
@@ -64,26 +68,6 @@ const Home = () => {
       </div>
     );
   }
-const filteredProducts = shoesProducts.filter((product) => {
-  if (selectedCategory === 'all') return true;
-
-  if (
-    selectedCategory === 'men' &&
-    product.category === 'Men Shoes'
-  ) return true;
-
-  if (
-    selectedCategory === 'women' &&
-    product.category === 'Women Shoes'
-  ) return true;
-
-  if (
-    selectedCategory === 'children' &&
-    product.category === 'Kids Shoes'
-  ) return true;
-
-  return false;
-});
   return (
     <div className="ds-page">
       <PageBanner
@@ -114,72 +98,23 @@ const filteredProducts = shoesProducts.filter((product) => {
           fontSize: '0.95rem'
         }}
       >
-        Showing <strong style={{ color: 'var(--ds-text)' }}>{
-  shoesProducts.filter((product) => {
-    if (selectedCategory === 'all')
-      return true;
-
-    if (
-      selectedCategory === 'men' &&
-      product.category === 'Men Shoes'
-    )
-      return true;
-
-    if (
-      selectedCategory === 'women' &&
-      product.category === 'Women Shoes'
-    )
-      return true;
-
-    if (
-      selectedCategory === 'children' &&
-      product.category === 'Kids Shoes'
-    )
-      return true;
-
-    return false;
-  }).length
-}</strong>{' '}
+        Showing <strong style={{ color: 'var(--ds-text)' }}>{products.length}</strong>{' '}
         styles
       </p>
 
-      {filteredProducts.length === 0 ? (
+      {products.length === 0 ? (
         <div className="ds-empty ds-panel ds-panel--padding">
           <p>No shoes match this filter.</p>
         </div>
       ) : (
         <div className="ds-product-grid">
-          {shoesProducts
-  .filter((product) => {
-    if (selectedCategory === 'all') return true;
-
-    if (
-      selectedCategory === 'men' &&
-      product.category === 'Men Shoes'
-    )
-      return true;
-
-    if (
-      selectedCategory === 'women' &&
-      product.category === 'Women Shoes'
-    )
-      return true;
-
-    if (
-      selectedCategory === 'children' &&
-      product.category === 'Kids Shoes'
-    )
-      return true;
-
-    return false;
-  })
-  .map((product, index) => (
+          {products.map((product) => (
             <article key={product._id} className="ds-product-card fade-in">
               <div className="ds-product-card__img-wrap">
                 <img
                   className="ds-product-card__img"
                   src={product.image}
-                  alt=""
+                  alt={product.name}
                   loading="lazy"
                   onError={(e) => {
                     e.target.src =
@@ -197,12 +132,12 @@ const filteredProducts = shoesProducts.filter((product) => {
                   className="ds-btn ds-btn--primary"
                   style={{ width: '100%' }}
                   onClick={() =>
-  navigate('/product', {
-    state: { product }
-  })
-}
+                    navigate('/product', {
+                      state: { product }
+                    })
+                  }
                 >
-                  View product
+                  View Details
                 </button>
               </div>
             </article>
@@ -212,125 +147,5 @@ const filteredProducts = shoesProducts.filter((product) => {
     </div>
   );
 };
-export const clothingProducts = [
 
-  // MEN CLOTHING
-
-  {
-    name: 'Urban Drift Hoodie',
-    price: 3499,
-    category: 'Men Clothing',
-    image:
-      'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80'
-  },
-  {
-    name: 'Tokyo Streetwear Tee',
-    price: 1999,
-    category: 'Men Clothing',
-    image:
-      'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=900&q=80'
-  },
-  {
-    name: 'Elite Bomber Jacket',
-    price: 6999,
-    category: 'Men Clothing',
-    image:
-      'https://images.unsplash.com/photo-1523398002811-999ca8dec234?w=900&q=80'
-  },
-  {
-    name: 'Royal Black Cargo',
-    price: 4299,
-    category: 'Men Clothing',
-    image:
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=80'
-  },
-  {
-    name: 'Neo Oversized Sweatshirt',
-    price: 2899,
-    category: 'Men Clothing',
-    image:
-      'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=900&q=80'
-  },
-
-
-
-  // WOMEN CLOTHING
-
-  {
-    name: 'Royal Co-Ord Set',
-    price: 5999,
-    category: 'Women Clothing',
-    image:
-      'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80'
-  },
-  {
-    name: 'Luxury Fit Denim',
-    price: 4599,
-    category: 'Women Clothing',
-    image:
-      'https://images.unsplash.com/photo-1542272604-787c3835535d?w=900&q=80'
-  },
-  {
-    name: 'Aura Beige Sweater',
-    price: 2799,
-    category: 'Women Clothing',
-    image:
-      'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=900&q=80'
-  },
-  {
-    name: 'Velvet Pink Hoodie',
-    price: 3299,
-    category: 'Women Clothing',
-    image:
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=80'
-  },
-  {
-    name: 'Diamond Street Jacket',
-    price: 6499,
-    category: 'Women Clothing',
-    image:
-      'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=900&q=80'
-  },
-
-
-
-  // KIDS CLOTHING
-
-  {
-    name: 'Kids Cartoon Hoodie',
-    price: 1799,
-    category: 'Kids Clothing',
-    image:
-      'https://images.unsplash.com/photo-1519238359922-989348752efb?w=900&q=80'
-  },
-  {
-    name: 'Tiny Champs Tee',
-    price: 999,
-    category: 'Kids Clothing',
-    image:
-      'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=900&q=80'
-  },
-  {
-    name: 'Mini Dino Sweatshirt',
-    price: 1499,
-    category: 'Kids Clothing',
-    image:
-      'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=900&q=80'
-  },
-  {
-    name: 'Rainbow Kids Hoodie',
-    price: 1699,
-    category: 'Kids Clothing',
-    image:
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=80'
-  },
-  {
-    name: 'Tiny Street Jacket',
-    price: 2299,
-    category: 'Kids Clothing',
-    image:
-      'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=900&q=80'
-  }
-
-];
 export default Home;

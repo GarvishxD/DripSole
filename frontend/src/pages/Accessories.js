@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import {
-  accessoriesProducts
-} from '../utils/productImages';
+import { productsAPI } from '../services/api';
 
 const Accessories = () => {
   const navigate = useNavigate();
 
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [selectedCategory, setSelectedCategory] =
     useState('all');
 
@@ -34,6 +35,55 @@ const Accessories = () => {
       icon: '🧒'
     }
   ];
+
+  useEffect(() => {
+    loadProducts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategory]);
+
+  const loadProducts = async () => {
+    setLoading(true);
+    try {
+      const filters = { type: 'Accessories' };
+      if (selectedCategory !== 'all') {
+        filters.category = selectedCategory;
+      }
+      const response = await productsAPI.getAll(filters);
+      // Handle both new and old response formats
+      const productsData = response.data?.data || response.data || [];
+      setProducts(Array.isArray(productsData) ? productsData : []);
+      setError('');
+    } catch (err) {
+      console.error('Error loading products:', err);
+      setError('Unable to connect to our collection. Please try again shortly.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="ds-page-loading">
+        <div className="ds-spinner" aria-hidden />
+        <p>Loading collection…</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="ds-page-error ds-panel ds-panel--padding">
+        <p className="ds-page-error__msg">{error}</p>
+        <button
+          type="button"
+          className="ds-btn ds-btn--primary"
+          onClick={() => loadProducts()}
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="main-content">
@@ -119,43 +169,28 @@ const Accessories = () => {
           </button>
         ))}
       </div>
-            <div className="ds-product-grid">
-        {accessoriesProducts
-          .filter((product) => {
-            if (
-              selectedCategory === 'all'
-            )
-              return true;
 
-            if (
-              selectedCategory ===
-                'men' &&
-              product.category ===
-                'Men Accessories'
-            )
-              return true;
+      <p
+        style={{
+          textAlign: 'center',
+          color: 'var(--ds-text-muted)',
+          marginBottom: '24px',
+          fontSize: '0.95rem'
+        }}
+      >
+        Showing <strong style={{ color: 'var(--ds-text)' }}>{products.length}</strong>{' '}
+        styles
+      </p>
 
-            if (
-              selectedCategory ===
-                'women' &&
-              product.category ===
-                'Women Accessories'
-            )
-              return true;
-
-            if (
-              selectedCategory ===
-                'children' &&
-              product.category ===
-                'Kids Accessories'
-            )
-              return true;
-
-            return false;
-          })
-          .map((product, index) => (
+      {products.length === 0 ? (
+        <div className="ds-empty ds-panel ds-panel--padding">
+          <p>No accessories match this filter.</p>
+        </div>
+      ) : (
+        <div className="ds-product-grid">
+          {products.map((product) => (
             <article
-              key={index}
+              key={product._id}
               className="ds-product-card fade-in"
             >
               <div className="ds-product-card__img-wrap">
@@ -193,7 +228,8 @@ const Accessories = () => {
               </div>
             </article>
           ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,449 +1,323 @@
-const clothing = [
-  // MEN'S CLOTHING (15 products)
-  { 
-    _id: 'c1', 
-    name: 'Premium Cotton T-Shirt White', 
-    price: 2499, 
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop&crop=center', 
-    description: 'Classic white cotton t-shirt with premium fabric blend',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'T-Shirts'
-  },
-  { 
-    _id: 'c2', 
-    name: 'Denim Jacket Classic Blue', 
-    price: 6999, 
-    image: 'https://images.unsplash.com/photo-1544966503-1f55b6f7b5cc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Classic blue denim jacket with modern fit',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Jackets'
-  },
-  { 
-    _id: 'c3', 
-    name: 'Formal Shirt Navy', 
-    price: 3999, 
-    image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop&crop=center', 
-    description: 'Professional navy formal shirt for business wear',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Shirts'
-  },
-  { 
-    _id: 'c4', 
-    name: 'Casual Chinos Khaki', 
-    price: 4499, 
-    image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop&crop=center', 
-    description: 'Comfortable khaki chinos for casual wear',
-    category: 'men',
-    sizes: ['30', '32', '34', '36', '38'],
-    type: 'clothing',
-    subCategory: 'Pants'
-  },
-  { 
-    _id: 'c5', 
-    name: 'Hoodie Charcoal Grey', 
-    price: 5499, 
-    image: 'https://images.unsplash.com/photo-1556821840-3a9ca9579702?w=400&h=400&fit=crop&crop=center', 
-    description: 'Cozy charcoal grey hoodie with premium cotton blend',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Hoodies'
-  },
-  { 
-    _id: 'c6', 
-    name: 'Polo Shirt Black', 
-    price: 3499, 
-    image: 'https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop&crop=center', 
-    description: 'Classic black polo shirt with collar design',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Polo'
-  },
-  { 
-    _id: 'c7', 
-    name: 'Jeans Slim Fit Dark', 
-    price: 5999, 
-    image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop&crop=center', 
-    description: 'Slim fit dark wash jeans with modern styling',
-    category: 'men',
-    sizes: ['30', '32', '34', '36', '38'],
-    type: 'clothing',
-    subCategory: 'Jeans'
-  },
-  { 
-    _id: 'c8', 
-    name: 'Blazer Formal Black', 
-    price: 12999, 
-    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&h=400&fit=crop&crop=center', 
-    description: 'Premium black formal blazer for special occasions',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Blazers'
-  },
-  { 
-    _id: 'c9', 
-    name: 'Sports Track Suit', 
-    price: 7999, 
-    image: 'https://images.unsplash.com/photo-1506629905607-64b10051407e?w=400&h=400&fit=crop&crop=center', 
-    description: 'Complete sports track suit for athletic activities',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Sports'
-  },
-  { 
-    _id: 'c10', 
-    name: 'Sweater Cable Knit', 
-    price: 6499, 
-    image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop&crop=center', 
-    description: 'Warm cable knit sweater for winter season',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Sweaters'
-  },
-  { 
-    _id: 'c11', 
-    name: 'Shorts Summer Cotton', 
-    price: 2999, 
-    image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=400&fit=crop&crop=center', 
-    description: 'Comfortable cotton shorts perfect for summer',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Shorts'
-  },
-  { 
-    _id: 'c12', 
-    name: 'Leather Jacket Brown', 
-    price: 15999, 
-    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&h=400&fit=crop&crop=center', 
-    description: 'Genuine brown leather jacket with vintage style',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Jackets'
-  },
-  { 
-    _id: 'c13', 
-    name: 'Linen Shirt White', 
-    price: 4999, 
-    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&h=400&fit=crop&crop=center', 
-    description: 'Breathable white linen shirt for summer comfort',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Shirts'
-  },
-  { 
-    _id: 'c14', 
-    name: 'Cardigan Wool Grey', 
-    price: 7499, 
-    image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop&crop=center', 
-    description: 'Elegant grey wool cardigan with button closure',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Cardigans'
-  },
-  { 
-    _id: 'c15', 
-    name: 'Tank Top Athletic', 
-    price: 1999, 
-    image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop&crop=center', 
-    description: 'Athletic tank top for gym and sports activities',
-    category: 'men',
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    type: 'clothing',
-    subCategory: 'Tank Tops'
-  },
+/**
+ * Apparel — image matches garment type (tee, shirt, jacket, dress, jeans, etc.).
+ */
+const img = (slug) =>
+  `https://images.unsplash.com/${slug}?auto=format&fit=crop&w=900&q=82`;
 
-  // WOMEN'S CLOTHING (15 products)
-  { 
-    _id: 'c16', 
-    name: 'Elegant Blouse Pink', 
-    price: 3999, 
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop&crop=center', 
-    description: 'Elegant pink blouse perfect for professional wear',
-    category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Blouses'
+module.exports = [
+  {
+    name: 'Oversized Graphic T-Shirt Black',
+    price: 2499,
+    image: img('photo-1521572163474-6864f9cf17ab'),
+    description: 'Streetwear oversized tee',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c17', 
-    name: 'Maxi Dress Floral', 
-    price: 6999, 
-    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop&crop=center', 
-    description: 'Beautiful floral maxi dress for special occasions',
-    category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Dresses'
+  {
+    name: 'Slim Fit Formal Shirt White',
+    price: 3999,
+    image: img('photo-1602810318383-e386cc2a3ccf'),
+    description: 'Crisp office shirt',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c18', 
-    name: 'Skinny Jeans Blue', 
-    price: 4999, 
-    image: 'https://images.unsplash.com/photo-1541840031508-326b77c9a17e?w=400&h=400&fit=crop&crop=center', 
-    description: 'Comfortable blue skinny jeans with stretch fabric',
-    category: 'women',
-    sizes: ['26', '28', '30', '32', '34'],
-    type: 'clothing',
-    subCategory: 'Jeans'
+  {
+    name: 'Denim Jacket Vintage Blue',
+    price: 6999,
+    image: img('photo-1576995975888-9eee44992f8f'),
+    description: 'Classic blue denim jacket',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c19', 
-    name: 'Cardigan Soft Pink', 
-    price: 5499, 
-    image: 'https://images.unsplash.com/photo-1544441893-675973e4b0a8?w=400&h=400&fit=crop&crop=center', 
-    description: 'Soft pink cardigan with delicate knit pattern',
-    category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Cardigans'
+  {
+    name: 'Cargo Pants Olive Green',
+    price: 5499,
+    image: img('photo-1473966968600-fa801b869a1a'),
+    description: 'Utility cargo pockets',
+    category: 'men',
+    sizes: ['30', '32', '34', '36'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c20', 
-    name: 'Silk Scarf Elegant', 
-    price: 2999, 
-    image: 'https://images.unsplash.com/photo-1544441893-675973e4b0a8?w=400&h=400&fit=crop&crop=center', 
-    description: 'Luxurious silk scarf with elegant patterns',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'clothing',
-    subCategory: 'Accessories'
+  {
+    name: 'Merino Wool Sweater',
+    price: 4599,
+    image: img('photo-1434389677669-e08b4cac3105'),
+    description: 'Knit crewneck sweater',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c21', 
-    name: 'Blazer Professional Navy', 
-    price: 8999, 
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop&crop=center', 
-    description: 'Professional navy blazer for business meetings',
+  {
+    name: 'Floral Summer Dress',
+    price: 5999,
+    image: img('photo-1515372039744-b8f02a3ae446'),
+    description: 'Lightweight floral midi dress',
     category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Blazers'
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c22', 
-    name: 'Summer Top White', 
-    price: 2499, 
-    image: 'https://images.unsplash.com/photo-1564257577407-bb021ad652e6?w=400&h=400&fit=crop&crop=center', 
-    description: 'Light white summer top with breathable fabric',
+  {
+    name: 'High Waist Skinny Jeans',
+    price: 4999,
+    image: img('photo-1541840031508-326b77c9a17e'),
+    description: 'Stretch skinny denim',
     category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Tops'
+    sizes: ['26', '28', '30', '32'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c23', 
-    name: 'Pencil Skirt Black', 
-    price: 3999, 
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop&crop=center', 
-    description: 'Classic black pencil skirt for professional look',
+  {
+    name: 'Crop Top Ribbed White',
+    price: 1999,
+    image: img('photo-1564257577407-bb021ad652e6'),
+    description: 'Ribbed fitted crop',
     category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Skirts'
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c24', 
-    name: 'Cocktail Dress Red', 
-    price: 9999, 
-    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop&crop=center', 
-    description: 'Stunning red cocktail dress for evening events',
+  {
+    name: 'Blazer Formal Beige',
+    price: 8999,
+    image: img('photo-1594633312681-425c7b97ccd1'),
+    description: 'Structured tailored blazer',
     category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Dresses'
+    sizes: ['S', 'M', 'L'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c25', 
-    name: 'Cashmere Sweater Beige', 
-    price: 12999, 
-    image: 'https://images.unsplash.com/photo-1544441893-675973e4b0a8?w=400&h=400&fit=crop&crop=center', 
-    description: 'Luxurious beige cashmere sweater for winter',
+  {
+    name: 'Pleated Midi Skirt',
+    price: 3799,
+    image: img('photo-1594633313593-bab3825d0caf'),
+    description: 'Flow pleated skirt',
     category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Sweaters'
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c26', 
-    name: 'Yoga Pants Black', 
-    price: 3499, 
-    image: 'https://images.unsplash.com/photo-1506629905607-64b10051407e?w=400&h=400&fit=crop&crop=center', 
-    description: 'Comfortable black yoga pants with stretch fabric',
-    category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Activewear'
-  },
-  { 
-    _id: 'c27', 
-    name: 'Trench Coat Beige', 
-    price: 14999, 
-    image: 'https://images.unsplash.com/photo-1544966503-1f55b6f7b5cc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Classic beige trench coat with timeless style',
-    category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Coats'
-  },
-  { 
-    _id: 'c28', 
-    name: 'Crop Top Striped', 
-    price: 1999, 
-    image: 'https://images.unsplash.com/photo-1564257577407-bb021ad652e6?w=400&h=400&fit=crop&crop=center', 
-    description: 'Trendy striped crop top for casual wear',
-    category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Crop Tops'
-  },
-  { 
-    _id: 'c29', 
-    name: 'Wide Leg Pants Cream', 
-    price: 5999, 
-    image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&h=400&fit=crop&crop=center', 
-    description: 'Elegant cream wide leg pants for formal occasions',
-    category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Pants'
-  },
-  { 
-    _id: 'c30', 
-    name: 'Denim Jacket Light Blue', 
-    price: 5999, 
-    image: 'https://images.unsplash.com/photo-1544966503-1f55b6f7b5cc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Light blue denim jacket with vintage wash',
-    category: 'women',
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    type: 'clothing',
-    subCategory: 'Jackets'
-  },
-
-  // CHILDREN'S CLOTHING (10 products)
-  { 
-    _id: 'c31', 
-    name: 'Kids T-Shirt Rainbow', 
-    price: 1499, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Colorful rainbow t-shirt perfect for active kids',
+  {
+    name: 'Kids Printed T-Shirt',
+    price: 1499,
+    image: img('photo-1503944168657-c1b2a78587bc'),
+    description: 'Soft cotton kids tee',
     category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'T-Shirts'
+    sizes: ['2-3Y', '4-5Y', '6-7Y'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c32', 
-    name: 'Kids Hoodie Blue', 
-    price: 2999, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Cozy blue hoodie with fun cartoon characters',
+  {
+    name: 'Kids Hoodie Cartoon',
+    price: 2499,
+    image: img('photo-1556821840-3a63f95609a7'),
+    description: 'Cozy fleece hoodie',
     category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Hoodies'
+    sizes: ['2-3Y', '4-5Y', '6-7Y'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c33', 
-    name: 'Kids Jeans Dark Blue', 
-    price: 2499, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Durable dark blue jeans for everyday play',
-    category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Jeans'
+  {
+    name: 'Linen Summer Shirt',
+    price: 3299,
+    image: img('photo-1596755094514-f87e34085b87'),
+    description: 'Breathable linen button-up',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c34', 
-    name: 'Princess Dress Pink', 
-    price: 3499, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Beautiful pink princess dress for special occasions',
-    category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Dresses'
+  {
+    name: 'Athletic Joggers Grey',
+    price: 2899,
+    image: img('photo-1518611012118-696072aa579a'),
+    description: 'Tapered sweat joggers',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c35', 
-    name: 'Sports Shorts Green', 
-    price: 1299, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Comfortable green sports shorts for active play',
-    category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Shorts'
+  {
+    name: 'Leather Biker Jacket',
+    price: 12999,
+    image: img('photo-1551028719-00167b16eac5'),
+    description: 'Black leather moto jacket',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c36', 
-    name: 'School Uniform Shirt', 
-    price: 1999, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Clean white school uniform shirt',
-    category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Uniforms'
+  {
+    name: 'Chino Shorts Khaki',
+    price: 2199,
+    image: img('photo-1591195853828-11ad59efd69f'),
+    description: 'Tailored summer shorts',
+    category: 'men',
+    sizes: ['30', '32', '34', '36'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c37', 
-    name: 'Winter Jacket Red', 
-    price: 4999, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Warm red winter jacket with hood',
-    category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Jackets'
+  {
+    name: 'Silk Blouse Ivory',
+    price: 4599,
+    image: img('photo-1564584217137-277f84789684'),
+    description: 'Fluid silk office blouse',
+    category: 'women',
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c38', 
-    name: 'Cartoon Pajama Set', 
-    price: 2299, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Cute cartoon character pajama set for bedtime',
-    category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Pajamas'
+  {
+    name: 'Cable Knit Cardigan',
+    price: 5299,
+    image: img('photo-1576566588028-4147f3842f27'),
+    description: 'Chunky cable knit layer',
+    category: 'women',
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c39', 
-    name: 'Summer Romper Yellow', 
-    price: 1799, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Bright yellow summer romper for little ones',
-    category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Rompers'
+  {
+    name: 'Wide Leg Trousers Black',
+    price: 4199,
+    image: img('photo-1594938298603-c8148c8dae94'),
+    description: 'High-rise wide leg pants',
+    category: 'women',
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
   },
-  { 
-    _id: 'c40', 
-    name: 'Kids Sweater Navy', 
-    price: 2999, 
-    image: 'https://images.unsplash.com/photo-1503944168657-c1b2a78587bc?w=400&h=400&fit=crop&crop=center', 
-    description: 'Cozy navy sweater for cooler weather',
+  {
+    name: 'Sports Leggings',
+    price: 2499,
+    image: img('photo-1544717297-f95a6c51ed46'),
+    description: 'Performance stretch leggings',
+    category: 'women',
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Rain Parka Olive',
+    price: 7499,
+    image: img('photo-1539533018447-63fcce2678e3'),
+    description: 'Water-resistant hooded parka',
+    category: 'women',
+    sizes: ['S', 'M', 'L'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Kids Denim Overalls',
+    price: 2799,
+    image: img('photo-1503919008464-12f8de20ed73'),
+    description: 'Play-ready denim overalls',
     category: 'children',
-    sizes: ['2-3Y', '4-5Y', '6-7Y', '8-9Y', '10-11Y'],
-    type: 'clothing',
-    subCategory: 'Sweaters'
-  }
+    sizes: ['2-3Y', '4-5Y', '6-7Y'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Kids Rain Jacket Yellow',
+    price: 1999,
+    image: img('photo-1519238263499-e7cd49f77aa6'),
+    description: 'Bright waterproof jacket',
+    category: 'children',
+    sizes: ['2-3Y', '4-5Y', '6-7Y'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Polo Shirt Navy',
+    price: 2699,
+    image: img('photo-1586790170083-2f9ceadc732d'),
+    description: 'Pique cotton polo',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Henley Long Sleeve',
+    price: 2399,
+    image: img('photo-1617127365659-c47fa864d8bc'),
+    description: 'Thermal henley base layer',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Down Puffer Vest',
+    price: 6299,
+    image: img('photo-1544022613-e87ca75a084a'),
+    description: 'Lightweight insulated vest',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Wrap Dress Burgundy',
+    price: 6799,
+    image: img('photo-1496747611176-843222e1e57c'),
+    description: 'Elegant wrap silhouette',
+    category: 'women',
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Tank Top Ribbed',
+    price: 1299,
+    image: img('photo-1588117260148-b47818741c74'),
+    description: 'Essential ribbed tank',
+    category: 'women',
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Boyfriend Jeans Light Wash',
+    price: 5299,
+    image: img('photo-1541099649105-f69ad21f3246'),
+    description: 'Relaxed straight denim',
+    category: 'women',
+    sizes: ['26', '28', '30', '32'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Trench Coat Camel',
+    price: 9999,
+    image: img('photo-1591047139829-d91aecb6caea'),
+    description: 'Classic double-breast trench',
+    category: 'women',
+    sizes: ['S', 'M', 'L'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Kids Flannel Shirt',
+    price: 1799,
+    image: img('photo-1620799140408-f4a421a6d654'),
+    description: 'Soft plaid flannel',
+    category: 'children',
+    sizes: ['2-3Y', '4-5Y', '6-7Y'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Kids Athletic Shorts',
+    price: 1199,
+    image: img('photo-1571019613454-4cb846978793'),
+    description: 'Mesh-lined sport shorts',
+    category: 'children',
+    sizes: ['2-3Y', '4-5Y', '6-7Y'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Oxford Shirt Blue Stripe',
+    price: 3499,
+    image: img('photo-1603252109303-2751441dd157'),
+    description: 'Business casual oxford',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Sherpa Zip Jacket',
+    price: 5599,
+    image: img('photo-1558171813-4c088753af8f'),
+    description: 'Warm fleece sherpa',
+    category: 'men',
+    sizes: ['S', 'M', 'L', 'XL'],
+    type: 'Clothing'
+  },
+  {
+    name: 'Midi Slip Dress Satin',
+    price: 5899,
+    image: img('photo-1595777457583-95e059d581b8'),
+    description: 'Evening satin slip',
+    category: 'women',
+    sizes: ['XS', 'S', 'M', 'L'],
+    type: 'Clothing'
+  },
 ];
-
-module.exports = clothing;

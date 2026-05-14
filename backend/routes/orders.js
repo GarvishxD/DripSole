@@ -14,6 +14,7 @@ const { adminAuth } = require('../middleware/auth');
 // @desc    Create new order
 // @access  Private
 router.post('/', auth, createOrder);
+router.put('/:id', updateOrderStatus);
 
 // @route   GET /api/orders/user
 // @desc    Get current user's orders

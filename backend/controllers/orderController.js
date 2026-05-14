@@ -52,7 +52,27 @@ exports.createOrder = async (req, res) => {
     res.status(500).json({ msg: 'Server Error' });
   }
 };
+export const updateOrderStatus = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id);
 
+    if (!order) {
+      return res.status(404).json({
+        message: 'Order not found'
+      });
+    }
+
+    order.status = req.body.status;
+
+    const updated = await order.save();
+
+    res.json(updated);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
 exports.getUserOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user.id })

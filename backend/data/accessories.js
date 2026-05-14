@@ -1,449 +1,368 @@
-const accessories = [
-  // MEN'S ACCESSORIES (15 products)
-  { 
-    _id: 'a1', 
-    name: 'Leather Wallet Classic Black', 
-    price: 3999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Premium genuine leather wallet with RFID protection',
+/**
+ * 40 accessories — each image URL matches the product category (not random bags for shirts).
+ */
+const img = (slug) =>
+  `https://images.unsplash.com/${slug}?auto=format&fit=crop&w=900&q=82`;
+
+module.exports = [
+  {
+    name: 'Leather Wallet Classic Black',
+    price: 3999,
+    image: img('photo-1553062407-98eeb64c6a62'),
+    description: 'Hand-stitched bi-fold wallet',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Wallets'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a2', 
-    name: 'Luxury Watch Silver Steel', 
-    price: 25999, 
-    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop&crop=center', 
-    description: 'Stainless steel luxury watch with precision movement',
+  {
+    name: 'Luxury Watch Silver Steel',
+    price: 25999,
+    image: img('photo-1524592094714-0f0654e20314'),
+    description: 'Brushed steel chronograph',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Watches'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a3', 
-    name: 'Designer Sunglasses Black', 
-    price: 8999, 
-    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop&crop=center', 
-    description: 'UV protection designer sunglasses with premium frame',
+  {
+    name: 'Designer Sunglasses Black',
+    price: 8999,
+    image: img('photo-1572635196237-14b3f281503f'),
+    description: 'Polarised dark lenses',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Sunglasses'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a4', 
-    name: 'Leather Belt Premium Brown', 
-    price: 2999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Handcrafted brown leather belt with metal buckle',
+  {
+    name: 'Leather Belt Premium Brown',
+    price: 2999,
+    image: img('photo-1624227739756-1000397893792'),
+    description: 'Burnished buckle belt',
     category: 'men',
     sizes: ['32', '34', '36', '38', '40'],
-    type: 'accessories',
-    subCategory: 'Belts'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a5', 
-    name: 'Business Briefcase Black', 
-    price: 15999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Professional black leather briefcase for business',
+  {
+    name: 'Roll-Top Backpack Waxed Canvas',
+    price: 6499,
+    image: img('photo-1555529627-d400acb52263'),
+    description: 'Outdoor roll-top daypack',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Bags'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a6', 
-    name: 'Silk Tie Navy Blue', 
-    price: 1999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: '100% silk navy blue tie for formal occasions',
+  {
+    name: 'Structured Leather Tote',
+    price: 7999,
+    image: img('photo-1548036328-c9fa89d128fa'),
+    description: 'Carry-all leather tote',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Quilted Crossbody Bag',
+    price: 5899,
+    image: img('photo-1564422170194-896b34313f42'),
+    description: 'Chain-strap evening bag',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Gold Hoop Earrings',
+    price: 2399,
+    image: img('photo-1617038260897-41a1f14a8ca0'),
+    description: 'Polished medium hoops',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Printed Silk Square Scarf',
+    price: 2199,
+    image: img('photo-1611591437281-460bfbe1220a'),
+    description: 'Silk neck scarf',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Minimal Gold Pendant Necklace',
+    price: 3699,
+    image: img('photo-1599643478518-a784e5dc4c8f'),
+    description: 'Fine chain with pendant',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Merino Wool Beanie',
+    price: 1399,
+    image: img('photo-1576871337632-b9fa40704504'),
+    description: 'Ribbed winter beanie',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Ties'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a7', 
-    name: 'Cufflinks Gold Plated', 
-    price: 4999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Elegant gold-plated cufflinks for dress shirts',
+  {
+    name: 'Six-Panel Baseball Cap',
+    price: 1599,
+    image: img('photo-1588850561407-ed78c282e89b'),
+    description: 'Adjustable cotton cap',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Cufflinks'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a8', 
-    name: 'Leather Backpack Vintage', 
-    price: 12999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Vintage style leather backpack for daily use',
+  {
+    name: 'Leather Driving Gloves',
+    price: 4499,
+    image: img('photo-1578651019298-fbc46daada09'),
+    description: 'Unlined leather gloves',
+    category: 'men',
+    sizes: ['S', 'M', 'L'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Compact Travel Umbrella',
+    price: 1299,
+    image: img('photo-1558618666-fcd25c85cd64'),
+    description: 'Wind-resistant folding umbrella',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Backpacks'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a9', 
-    name: 'Baseball Cap Premium', 
-    price: 2499, 
-    image: 'https://images.unsplash.com/photo-1521369909029-2afed882baee?w=400&h=400&fit=crop&crop=center', 
-    description: 'Premium cotton baseball cap with adjustable strap',
+  {
+    name: 'Silk Necktie Navy',
+    price: 2499,
+    image: img('photo-1586790170083-2f9ceadc732d'),
+    description: 'Matte silk tie',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Caps'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a10', 
-    name: 'Chain Bracelet Silver', 
-    price: 6999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Sterling silver chain bracelet for men',
+  {
+    name: 'Mother-of-Pearl Cufflinks',
+    price: 3299,
+    image: img('photo-1617127937979-f59cca960949'),
+    description: 'Dress shirt cufflinks',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Jewelry'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a11', 
-    name: 'Pocket Watch Classic', 
-    price: 18999, 
-    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop&crop=center', 
-    description: 'Vintage-style pocket watch with chain',
+  {
+    name: 'Sterling Curb Bracelet',
+    price: 5199,
+    image: img('photo-1611591437281-460bfbe1220a'),
+    description: 'Silver-tone bracelet',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Signet Ring Matte Gold',
+    price: 2899,
+    image: img('photo-1515562141207-7a88fb7ce338'),
+    description: 'Minimal engraved ring',
+    category: 'women',
+    sizes: ['6', '7', '8'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Charm Anklet Silver',
+    price: 1799,
+    image: img('photo-1611923134239-b9be5816e23c'),
+    description: 'Delicate chain anklet',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Barrette & Clip Set',
+    price: 899,
+    image: img('photo-1594633313593-bab3825d0caf'),
+    description: 'Acetate hair clips',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Merino Dress Socks 3-Pack',
+    price: 1499,
+    image: img('photo-1586350976688-2fb613845892'),
+    description: 'Fine gauge crew socks',
+    category: 'men',
+    sizes: ['M', 'L'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Felt Laptop Sleeve 13"',
+    price: 2799,
+    image: img('photo-1625840617825-fe63233289aa'),
+    description: 'Soft-touch laptop sleeve',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Watches'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a12', 
-    name: 'Gym Bag Sports Black', 
-    price: 4999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Waterproof sports gym bag with multiple compartments',
+  {
+    name: 'Insulated Steel Bottle 750ml',
+    price: 1999,
+    image: img('photo-1602146685888-62866354391e'),
+    description: 'Double-wall drink bottle',
     category: 'men',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Sports Bags'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a13', 
-    name: 'Gloves Leather Brown', 
-    price: 3499, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Genuine leather gloves for winter season',
+  {
+    name: 'RFID Passport Sleeve',
+    price: 1899,
+    image: img('photo-1627123425744-d5a041394053'),
+    description: 'Slim travel passport cover',
     category: 'men',
-    sizes: ['S', 'M', 'L', 'XL'],
-    type: 'accessories',
-    subCategory: 'Gloves'
+    sizes: ['One Size'],
+    type: 'Accessories'
   },
-  { 
-    _id: 'a14', 
-    name: 'Cologne Fragrance Premium', 
-    price: 7999, 
-    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop&crop=center', 
-    description: 'Long-lasting premium cologne for men',
+  {
+    name: 'Leather Luggage Tag',
+    price: 999,
+    image: img('photo-1593030766734-06ab71464258'),
+    description: 'Embossed luggage tag',
     category: 'men',
-    sizes: ['100ml'],
-    type: 'accessories',
-    subCategory: 'Fragrances'
+    sizes: ['One Size'],
+    type: 'Accessories'
   },
-  { 
-    _id: 'a15', 
-    name: 'Phone Case Leather', 
-    price: 1999, 
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop&crop=center', 
-    description: 'Premium leather phone case with card slots',
+  {
+    name: 'Cotton Bandana Pack',
+    price: 799,
+    image: img('photo-1578662996442-48f60103fc96'),
+    description: 'Vintage-print square bandanas',
     category: 'men',
-    sizes: ['iPhone', 'Samsung'],
-    type: 'accessories',
-    subCategory: 'Phone Cases'
+    sizes: ['One Size'],
+    type: 'Accessories'
   },
-
-  // WOMEN'S ACCESSORIES (15 products)
-  { 
-    _id: 'a16', 
-    name: 'Designer Handbag Pink', 
-    price: 18999, 
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Elegant pink designer handbag with gold hardware',
+  {
+    name: 'Velvet Bow Tie',
+    price: 1699,
+    image: img('photo-1558171813-4c088753af8f'),
+    description: 'Pre-tied evening bow tie',
+    category: 'men',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Blue-Light Reading Glasses',
+    price: 2299,
+    image: img('photo-1574258495973-f010dfbb5371'),
+    description: 'Clear frame readers',
     category: 'women',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Handbags'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a17', 
-    name: 'Pearl Necklace White', 
-    price: 12999, 
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop&crop=center', 
-    description: 'Classic white pearl necklace for special occasions',
+  {
+    name: 'PD Fast Charger 35W',
+    price: 3499,
+    image: img('photo-1616624877877-705391612cbf'),
+    description: 'Compact USB-C wall charger',
+    category: 'men',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Silicone Earbud Case',
+    price: 1299,
+    image: img('photo-1599493367397-e94cc981bd76'),
+    description: 'Shock-proof buds case',
     category: 'women',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Jewelry'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a18', 
-    name: 'Silk Scarf Floral Print', 
-    price: 4999, 
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Luxurious silk scarf with beautiful floral patterns',
+  {
+    name: 'Satin Sleep Mask',
+    price: 899,
+    image: img('photo-1515372039744-b8f02a3ae446'),
+    description: 'Cool-touch eye mask',
     category: 'women',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Scarves'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a19', 
-    name: 'Diamond Earrings Silver', 
-    price: 15999, 
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop&crop=center', 
-    description: 'Sterling silver earrings with diamond accents',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Earrings'
-  },
-  { 
-    _id: 'a20', 
-    name: 'Leather Purse Cream', 
-    price: 8999, 
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Cream colored leather purse with multiple compartments',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Purses'
-  },
-  { 
-    _id: 'a21', 
-    name: 'Designer Watch Rose Gold', 
-    price: 22999, 
-    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop&crop=center', 
-    description: 'Elegant rose gold watch with leather strap',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Watches'
-  },
-  { 
-    _id: 'a22', 
-    name: 'Sunglasses Cat Eye', 
-    price: 6999, 
-    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop&crop=center', 
-    description: 'Trendy cat-eye sunglasses with UV protection',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Sunglasses'
-  },
-  { 
-    _id: 'a23', 
-    name: 'Hair Accessories Set', 
-    price: 2999, 
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Premium hair clips, bands and accessories set',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Hair Accessories'
-  },
-  { 
-    _id: 'a24', 
-    name: 'Gold Bracelet Chain', 
-    price: 14999, 
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop&crop=center', 
-    description: '18k gold plated chain bracelet for women',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Bracelets'
-  },
-  { 
-    _id: 'a25', 
-    name: 'Perfume Floral Essence', 
-    price: 9999, 
-    image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop&crop=center', 
-    description: 'Elegant floral perfume with long-lasting fragrance',
-    category: 'women',
-    sizes: ['50ml', '100ml'],
-    type: 'accessories',
-    subCategory: 'Perfumes'
-  },
-  { 
-    _id: 'a26', 
-    name: 'Evening Clutch Gold', 
-    price: 7999, 
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Glamorous gold evening clutch for parties',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Clutches'
-  },
-  { 
-    _id: 'a27', 
-    name: 'Makeup Organizer Luxury', 
-    price: 5999, 
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Premium makeup organizer with mirror and compartments',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Organizers'
-  },
-  { 
-    _id: 'a28', 
-    name: 'Phone Wallet Case Pink', 
-    price: 2499, 
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Pink phone wallet case with card and money slots',
-    category: 'women',
-    sizes: ['iPhone', 'Samsung'],
-    type: 'accessories',
-    subCategory: 'Phone Cases'
-  },
-  { 
-    _id: 'a29', 
-    name: 'Travel Cosmetic Bag', 
-    price: 3999, 
-    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Waterproof travel cosmetic bag with multiple pockets',
-    category: 'women',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Travel Bags'
-  },
-  { 
-    _id: 'a30', 
-    name: 'Fashion Ring Set', 
-    price: 4999, 
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop&crop=center', 
-    description: 'Set of 5 trendy fashion rings in different styles',
-    category: 'women',
-    sizes: ['6', '7', '8', '9'],
-    type: 'accessories',
-    subCategory: 'Rings'
-  },
-
-  // CHILDREN'S ACCESSORIES (10 products)
-  { 
-    _id: 'a31', 
-    name: 'Kids Backpack Unicorn', 
-    price: 2999, 
-    image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Colorful unicorn backpack perfect for school',
+  {
+    name: 'Kids Character Backpack',
+    price: 2699,
+    image: img('photo-1622560488106-93383817629d'),
+    description: 'Lightweight school backpack',
     category: 'children',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Backpacks'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a32', 
-    name: 'Cartoon Watch Digital', 
-    price: 1999, 
-    image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop&crop=center', 
-    description: 'Fun digital watch with cartoon characters',
+  {
+    name: 'Kids Water Bottle Flip-Top',
+    price: 899,
+    image: img('photo-1602146685888-62866354391e'),
+    description: 'BPA-free bottle — prints vary',
     category: 'children',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Watches'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a33', 
-    name: 'Kids Sunglasses Colorful', 
-    price: 1499, 
-    image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop&crop=center', 
-    description: 'UV protection sunglasses in bright colors for kids',
+  {
+    name: 'Kids Novelty Snap Bracelet',
+    price: 499,
+    image: img('photo-1599643478518-a784e5dc4c8f'),
+    description: 'Colourful snap bracelets',
     category: 'children',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Sunglasses'
+    type: 'Accessories'
   },
-  { 
-    _id: 'a34', 
-    name: 'Hair Bow Set Princess', 
-    price: 999, 
-    image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Set of 10 princess-themed hair bows for girls',
+  {
+    name: 'Sports Sweatband Duo',
+    price: 699,
+    image: img('photo-1571019613454-4cb846978793'),
+    description: 'Wrist sweatbands',
+    category: 'men',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Wide-Brim Straw Hat',
+    price: 3299,
+    image: img('photo-1521369909029-2af98088300d'),
+    description: 'Summer straw sun hat',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Leather Card Holder Slim',
+    price: 2199,
+    image: img('photo-1627123425744-d5a041394053'),
+    description: 'Four-slot minimal wallet',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Canvas Belt Bag',
+    price: 3799,
+    image: img('photo-1515886657613-9f3515b0c78f'),
+    description: 'Hands-free waist bag',
+    category: 'women',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Stainless Money Clip',
+    price: 1499,
+    image: img('photo-1628348060619-7ff005fe195e'),
+    description: 'Brushed steel cash clip',
+    category: 'men',
+    sizes: ['One Size'],
+    type: 'Accessories'
+  },
+  {
+    name: 'Kids Sun Hat Wide Brim',
+    price: 1199,
+    image: img('photo-1515488764276-be28ccbc7288'),
+    description: 'UPF-rated kids sun hat',
     category: 'children',
     sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Hair Accessories'
-  },
-  { 
-    _id: 'a35', 
-    name: 'School Lunch Box Hero', 
-    price: 1499, 
-    image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Superhero themed lunch box with compartments',
-    category: 'children',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Lunch Boxes'
-  },
-  { 
-    _id: 'a36', 
-    name: 'Kids Baseball Cap Rainbow', 
-    price: 899, 
-    image: 'https://images.unsplash.com/photo-1521369909029-2afed882baee?w=400&h=400&fit=crop&crop=center', 
-    description: 'Colorful rainbow baseball cap for children',
-    category: 'children',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Caps'
-  },
-  { 
-    _id: 'a37', 
-    name: 'Friendship Bracelet Kit', 
-    price: 1299, 
-    image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=400&fit=crop&crop=center', 
-    description: 'DIY friendship bracelet making kit with colorful beads',
-    category: 'children',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Craft Kits'
-  },
-  { 
-    _id: 'a38', 
-    name: 'Water Bottle Sports', 
-    price: 799, 
-    image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=400&fit=crop&crop=center', 
-    description: 'BPA-free sports water bottle with fun designs',
-    category: 'children',
-    sizes: ['500ml'],
-    type: 'accessories',
-    subCategory: 'Water Bottles'
-  },
-  { 
-    _id: 'a39', 
-    name: 'Kids Wallet Cartoon', 
-    price: 699, 
-    image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Small wallet with favorite cartoon characters',
-    category: 'children',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Wallets'
-  },
-  { 
-    _id: 'a40', 
-    name: 'School Badge Set', 
-    price: 499, 
-    image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=400&fit=crop&crop=center', 
-    description: 'Set of achievement badges for school backpacks',
-    category: 'children',
-    sizes: ['One Size'],
-    type: 'accessories',
-    subCategory: 'Badges'
+    type: 'Accessories'
   }
 ];
-
-module.exports = accessories;
