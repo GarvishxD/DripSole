@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import { useToast } from '../context/ToastContext';
+import { getProductImage } from '../utils/productImages';
 const AdminPanel = () => {
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -55,12 +57,13 @@ const AdminPanel = () => {
 
       if (response.ok) {
         loadOrders();
+        showToast('Order status updated.', 'success', 'Saved');
       } else {
-        alert('Error updating order status');
+        showToast('Could not update that order.', 'error');
       }
     } catch (err) {
       console.error('Error updating order:', err);
-      alert('Error updating order status');
+      showToast('Could not update order — try again.', 'error');
     }
   };
 
@@ -69,7 +72,7 @@ const AdminPanel = () => {
       case 'pending': return '#f59e0b';
       case 'confirmed': return '#3b82f6';
       case 'processing': return '#8b5cf6';
-      case 'shipped': return '#06b6d4';
+      case 'shipped': return '#9d8260';
       case 'delivered': return '#10b981';
       case 'cancelled': return '#ef4444';
       default: return '#6b7280';
@@ -364,8 +367,14 @@ const AdminPanel = () => {
                             borderRadius: '10px'
                           }}
                         >
+                          <button
+  onClick={() => navigate('/admin-orders')}
+  className="ds-btn ds-btn--primary"
+>
+  Manage Orders
+</button>
                           <img
-                            src={item.image}
+                           src={item.image}
                             alt={item.name}
                             style={{
                               width: '60px',

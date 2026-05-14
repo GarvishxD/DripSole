@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
 
 // Create axios instance
 const api = axios.create({
@@ -12,7 +12,7 @@ api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
     if (token) {
-      config.headers['x-auth-token'] = token;
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
   },
@@ -30,7 +30,11 @@ export const authAPI = {
 
 // Products API
 export const productsAPI = {
-  getAll: () => api.get('/products'),
+  getAll: (filters = {}) => {
+    // filters can be { type: 'Shoes', category: 'men' }
+    const params = new URLSearchParams(filters);
+    return api.get(`/products?${params.toString()}`);
+  },
   getById: (id) => api.get(`/products/${id}`),
   create: (productData) => api.post('/products', productData),
   update: (id, productData) => api.put(`/products/${id}`, productData),

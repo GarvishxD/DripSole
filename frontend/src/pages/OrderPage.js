@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import { getProductImage } from '../utils/productImages';
 const OrderPage = () => {
   const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ const OrderPage = () => {
       case 'pending': return '#f59e0b';
       case 'confirmed': return '#3b82f6';
       case 'processing': return '#8b5cf6';
-      case 'shipped': return '#06b6d4';
+      case 'shipped': return '#9d8260';
       case 'delivered': return '#10b981';
       case 'cancelled': return '#ef4444';
       default: return '#6b7280';
@@ -248,14 +248,24 @@ const OrderPage = () => {
                           }}
                         />
                         <div style={{ flex: 1 }}>
-                          <h5 style={{
-                            color: '#f8fafc',
-                            fontSize: '1.2rem',
-                            fontWeight: '600',
-                            marginBottom: '5px'
-                          }}>
-                            {item.name}
-                          </h5>
+                         <h5
+  style={{
+    color: '#f8fafc',
+    fontSize: '1.2rem',
+    fontWeight: '600',
+    marginBottom: '5px',
+    cursor: 'pointer'
+  }}
+  onClick={() =>
+    navigate('/product', {
+      state: {
+        product: item
+      }
+    })
+  }
+>
+  {item.name}
+</h5>
                           <p style={{
                             color: '#cbd5e1',
                             fontSize: '0.9rem',
