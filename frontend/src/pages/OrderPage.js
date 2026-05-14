@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { getProductImage } from '../utils/productImages';
 const OrderPage = () => {
-  const { user, isAuthenticated } = useAuth();
+ const {} = useAuth();
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
