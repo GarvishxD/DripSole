@@ -47,7 +47,8 @@ const Header = () => {
 
   const [mobileMenu, setMobileMenu] =
     useState(false);
-
+const [search, setSearch] =
+  useState('');
   const [isMobile, setIsMobile] =
     useState(window.innerWidth <= 768);
 
@@ -136,11 +137,17 @@ const Header = () => {
   }}
 >
 
-  <input
-    type="text"
-    placeholder="Search products..."
-    className="ds-search-input"
-  />
+ <input
+  type="text"
+  placeholder="Search products..."
+  className="ds-search-input"
+
+  value={search}
+
+  onChange={(e) =>
+    setSearch(e.target.value)
+  }
+/>
 
 </div>
         <Link
@@ -416,7 +423,7 @@ const Header = () => {
               <div
                 style={{
                   background:
-  'rgba(255,255,255,0.08)',
+  'rgba(255,255,255,0.12)',
                   padding: '16px',
                   borderRadius: '16px',
                   marginBottom: '25px'
@@ -470,7 +477,7 @@ const Header = () => {
                   padding: '14px',
                   borderRadius: '14px',
                   background:
-  'rgba(255,255,255,0.08)'
+  'rgba(255,255,255,0.12)'
                 }}
               >
                 👟 Shoes
@@ -489,7 +496,7 @@ const Header = () => {
                   padding: '14px',
                   borderRadius: '14px',
                   background:
-  'rgba(255,255,255,0.08)'
+  'rgba(255,255,255,0.12)'
                 }}
               >
                 👕 Clothing
@@ -508,7 +515,7 @@ const Header = () => {
                   padding: '14px',
                   borderRadius: '14px',
                   background:
-  'rgba(255,255,255,0.08)'
+  'rgba(255,255,255,0.12)'
                 }}
               >
                 👜 Accessories
