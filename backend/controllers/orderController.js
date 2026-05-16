@@ -1,75 +1,55 @@
 const Order = require('../models/Order');
 const Product = require('../models/Product');
 const User = require('../models/User');
-
 exports.createOrder = async (req, res) => {
   try {
+
     const { items, shippingAddress } = req.body;
-    
+
     if (!items || items.length === 0) {
-      return res.status(400).json({ msg: 'No items in order' });
-    }
-
-    let total = 0;
-    const orderItems = [];
-
-    // Process each item and calculate total
-    for (let item of items) {
-      const product = await Product.findById(item.productId);
-      if (!product) {
-        return res.status(404).json({ msg: `Product not found: ${item.productId}` });
-      }
-      
-      const orderItem = {
-        product: product._id,
-        name: product.name,
-        quantity: item.quantity || 1,
-        price: product.price,
-        size: item.size || '10'
-      };
-      
-      total += product.price * orderItem.quantity;
-      orderItems.push(orderItem);
-    }
-
-    // Create order
-    const order = new Order({
-      user: req.user.id,
-      items: orderItems,
-      total: parseFloat(total.toFixed(2)),
-      shippingAddress
-    });
-
-    await order.save();
-    
-    // Populate order details
-    await order.populate('user', 'name email');
-    await order.populate('items.product', 'name image');
-    
-    res.json(order);
-  } catch (error) {
-    console.error('Create order error:', error.message);
-    res.status(500).json({ msg: 'Server Error' });
-  }
-};
-export const updateOrderStatus = async (req, res) => {
-  try {
-    const order = await Order.findById(req.params.id);
-
-    if (!order) {
-      return res.status(404).json({
-        message: 'Order not found'
+      return res.status(400).json({
+        msg: 'No items in order'
       });
     }
 
-    order.status = req.body.status;
+    let total = 0;
 
-    const updated = await order.save();
+    const orderItems = [];
 
-    res.json(updated);
+    for (let item of items) {
+
+      const orderItem = {
+        name: item.name,
+        image: item.image,
+        category: item.category,
+        type: item.type,
+        selectedSize: item.selectedSize,
+        quantity: item.quantity || 1,
+        price: item.price
+      };
+
+      total += item.price * orderItem.quantity;
+
+      orderItems.push(orderItem);
+    }
+
+    const order = new Order({
+      user: req.user.id,
+      items: orderItems,
+      shippingAddress,
+      total
+    });
+
+    const createdOrder = await order.save();
+
+    res.status(201).json(createdOrder);
+
   } catch (error) {
+
+    console.log(error);
+
     res.status(500).json({
-      message: error.message
+      msg: error.message
     });
   }
 };
@@ -107,37 +87,7 @@ exports.getAllOrders = async (req, res) => {
   }
 };
 
-exports.updateOrderStatus = async (req, res) => {
-  try {
-    const { status, adminNote } = req.body;
-    
-    if (!['Pending', 'Approved', 'Declined'].includes(status)) {
-      return res.status(400).json({ msg: 'Invalid status' });
-    }
 
-    const order = await Order.findById(req.params.id);
-    if (!order) {
-      return res.status(404).json({ msg: 'Order not found' });
-    }
-
-    order.status = status;
-    order.adminNote = adminNote || '';
-    order.approvedBy = req.user.id;
-    order.approvedAt = new Date();
-
-    await order.save();
-    
-    // Populate updated order
-    await order.populate('user', 'name email');
-    await order.populate('items.product', 'name image');
-    await order.populate('approvedBy', 'name');
-
-    res.json(order);
-  } catch (error) {
-    console.error('Update order status error:', error.message);
-    res.status(500).json({ msg: 'Server Error' });
-  }
-};
 
 exports.getOrderById = async (req, res) => {
   try {

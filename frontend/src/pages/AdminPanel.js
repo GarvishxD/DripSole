@@ -218,7 +218,7 @@ const AdminPanel = () => {
               color: '#d4af37',
               marginBottom: '5px'
             }}>
-              ₹{orders.reduce((total, order) => total + order.totalAmount, 0).toLocaleString('en-IN')}
+              ₹{orders.reduce((total, order) => total + order.total, 0).toLocaleString('en-IN')}
             </div>
             <div style={{ color: '#cbd5e1', fontSize: '1rem' }}>Total Revenue</div>
           </div>
@@ -483,7 +483,7 @@ const AdminPanel = () => {
                         fontSize: '1.5rem',
                         fontWeight: '700'
                       }}>
-                        ₹{order.totalAmount.toLocaleString('en-IN')}
+                        ₹(order.total || 0).toLocaleString('en-IN')
                       </div>
                     </div>
                   </div>

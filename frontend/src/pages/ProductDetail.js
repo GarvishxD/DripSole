@@ -43,13 +43,16 @@ const ProductDetail = () => {
     );
   }
 
-  const sizes = [
-    'UK 6',
-    'UK 7',
-    'UK 8',
-    'UK 9',
-    'UK 10'
-  ];
+  const sizes =
+  product.type === 'Accessories'
+    ? ['Standard Size']
+    : [
+        'UK 6',
+        'UK 7',
+        'UK 8',
+        'UK 9',
+        'UK 10'
+      ];
 
   const handleAddToCart = () => {
     addToCart(
@@ -135,6 +138,7 @@ const ProductDetail = () => {
           </h1>
 
           <h2
+          
             style={{
               color: '#d4b896',
               marginBottom: '20px'

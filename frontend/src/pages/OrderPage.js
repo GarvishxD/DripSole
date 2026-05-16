@@ -353,7 +353,7 @@ const OrderPage = () => {
                       fontSize: '2rem',
                       fontWeight: '700'
                     }}>
-                      ₹{order.totalAmount.toLocaleString('en-IN')}
+                     ₹{(order.total || 0).toLocaleString('en-IN')}
                     </div>
                   </div>
                 </div>

@@ -194,24 +194,39 @@ app.get('/api/orders', authenticateToken, async (req, res) => {
   }
 });
 
-app.post('/api/orders', authenticateToken, async (req, res) => {
+
+
+   app.post('/api/orders', authenticateToken, async (req, res) => {
+
   try {
+
     const { items, shippingAddress } = req.body;
 
-    const totalAmount = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    const total = items.reduce(
+      (sum, item) =>
+        sum + item.price * item.quantity,
+      0
+    );
 
     const order = new Order({
       user: req.user._id,
       items,
-      totalAmount,
-      shippingAddress
+      total,
+      shippingAddress,
+      status: 'pending'
     });
 
     await order.save();
 
     res.status(201).json(order);
+
   } catch (error) {
-    res.status(500).json({ message: 'Order error' });
+
+    console.log(error);
+
+    res.status(500).json({
+      message: error.message
+    });
   }
 });
 

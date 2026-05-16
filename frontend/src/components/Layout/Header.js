@@ -1,7 +1,24 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import { useCart } from '../../context/CartContext';
+import React, { useState } from 'react';
+
+import {
+  Link,
+  useNavigate,
+  useLocation
+} from 'react-router-dom';
+
+import { useAuth }
+  from '../../context/AuthContext';
+
+import { useCart }
+  from '../../context/CartContext';
+
+import {
+  shoesProducts,
+  clothingProducts
+} from '../../utils/productImages';
+
+import { accessoriesProducts }
+  from '../../utils/accessoriesData';
 
 const navStyle = {
   color: '#f8fafc',
@@ -11,6 +28,7 @@ const navStyle = {
 };
 
 const Header = () => {
+
   const { user, isAuthenticated, logout } =
     useAuth();
 
@@ -18,46 +36,158 @@ const Header = () => {
 
   const navigate = useNavigate();
 
+  const location = useLocation();
+
+  const [search, setSearch] =
+    useState('');
+
+  const allProducts = [
+    ...shoesProducts,
+    ...clothingProducts,
+    ...accessoriesProducts
+  ];
+
+  const filteredSearch =
+    search.length > 0
+      ? allProducts.filter((item) =>
+          item.name
+            .toLowerCase()
+            .includes(
+              search.toLowerCase()
+            )
+        )
+      : [];
+
   const handleLogout = () => {
     logout();
     navigate('/');
   };
 
   return (
+
     <header
       style={{
         background: '#0f172a',
-        padding: '20px 40px'
+        padding: '20px 40px',
+        position: 'sticky',
+        top: 0,
+        zIndex: 999
       }}
     >
+
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+          gap: '30px'
         }}
       >
+
         <Link
           to="/"
           style={{
             color: '#d4b896',
             fontSize: '2rem',
             fontWeight: '800',
-            textDecoration: 'none'
+            textDecoration: 'none',
+            whiteSpace: 'nowrap'
           }}
         >
           DripSole
         </Link>
 
+        {(
+          location.pathname === '/' ||
+          location.pathname === '/clothing' ||
+          location.pathname === '/accessories'
+        ) && (
+
+          <div className="ds-search-wrapper">
+
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={search}
+              onChange={(e) =>
+                setSearch(e.target.value)
+              }
+              className="ds-search-input"
+            />
+
+            {search.length > 0 && (
+
+              <div className="ds-search-dropdown">
+
+                {filteredSearch.length > 0 ? (
+
+                  filteredSearch
+                    .slice(0, 8)
+                    .map((product) => (
+
+                      <div
+                        key={product._id}
+                        className="ds-search-item"
+                        onClick={() => {
+
+                          navigate('/product', {
+                            state: { product }
+                          });
+
+                          setSearch('');
+
+                        }}
+                      >
+
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                        />
+
+                        <div>
+
+                          <h4>
+                            {product.name}
+                          </h4>
+
+                          <p>
+                            ₹{product.price}
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                    ))
+
+                ) : (
+
+                  <div className="ds-no-results">
+                    No products found
+                  </div>
+
+                )}
+
+              </div>
+
+            )}
+
+          </div>
+
+        )}
+
         <nav
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '34px'
+            gap: '24px',
+            flexWrap: 'wrap'
           }}
         >
+
           {!user?.isAdmin && (
             <>
+
               <Link to="/" style={navStyle}>
                 👟 Shoes
               </Link>
@@ -83,17 +213,25 @@ const Header = () => {
                 📞 Contact
               </Link>
 
-              <Link to="/cart" style={navStyle}>
+              <Link
+                to="/cart"
+                style={navStyle}
+              >
                 🛒 Cart ({totalItems})
               </Link>
 
-              <Link to="/order" style={navStyle}>
+              <Link
+                to="/order"
+                style={navStyle}
+              >
                 📦 My Orders
               </Link>
+
             </>
           )}
 
           {user?.isAdmin && (
+
             <Link
               to="/admin"
               style={{
@@ -107,11 +245,17 @@ const Header = () => {
             >
               👑 Admin Panel
             </Link>
+
           )}
 
           {isAuthenticated ? (
             <>
-              <span style={{ color: '#fff' }}>
+
+              <span
+                style={{
+                  color: '#fff'
+                }}
+              >
                 Welcome, {user?.name}
               </span>
 
@@ -123,14 +267,17 @@ const Header = () => {
                   border: 'none',
                   padding: '10px 16px',
                   borderRadius: '10px',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  fontWeight: '700'
                 }}
               >
                 Logout
               </button>
+
             </>
           ) : (
             <>
+
               <Link
                 to="/login"
                 style={navStyle}
@@ -144,11 +291,16 @@ const Header = () => {
               >
                 Signup
               </Link>
+
             </>
           )}
+
         </nav>
+
       </div>
+
     </header>
+
   );
 };
 

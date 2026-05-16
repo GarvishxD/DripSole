@@ -45,6 +45,7 @@ function App() {
                   <Route path="/order" element={<OrderPage />} />
                   <Route path="/admin-orders" element={<AdminOrders />} />
                   <Route path="/admin" element={<AdminPanel />} />
+                  
                   <Route
   path="/admin"
   element={<AdminDashboard />}

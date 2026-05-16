@@ -4,7 +4,8 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 import PageBanner from '../components/Layout/PageBanner';
-
+const qrImage =
+  'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=Paytm-UPI';
 const initialShipping = {
   name: '',
   phone: '',
@@ -17,6 +18,8 @@ const initialShipping = {
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
+  const [paymentMethod, setPaymentMethod] =
+  useState('cod');
   const { showToast } = useToast();
   const { isAuthenticated, loading: authLoading } = useAuth();
   const { cartItems, totalPrice, clearCart } = useCart();
@@ -311,6 +314,122 @@ const CheckoutPage = () => {
           >
             {loading ? 'Placing order…' : 'Place order'}
           </button>
+          <div
+  style={{
+    marginTop: '30px',
+    background: '#111827',
+    padding: '24px',
+    borderRadius: '20px'
+  }}
+>
+
+  <h2
+    style={{
+      color: 'white',
+      marginBottom: '20px'
+    }}
+  >
+    Select Payment Method
+  </h2>
+
+  <div
+    style={{
+      display: 'flex',
+      gap: '20px',
+      flexWrap: 'wrap'
+    }}
+  >
+
+    <button
+      type="button"
+      onClick={() =>
+        setPaymentMethod('cod')
+      }
+      style={{
+        padding: '16px 24px',
+        borderRadius: '16px',
+        border:
+          paymentMethod === 'cod'
+            ? '2px solid #d4af37'
+            : '1px solid #374151',
+        background:
+          paymentMethod === 'cod'
+            ? '#d4af37'
+            : '#1f2937',
+        color:
+          paymentMethod === 'cod'
+            ? '#111'
+            : 'white',
+        cursor: 'pointer',
+        fontWeight: '700'
+      }}
+    >
+      Cash on Delivery
+    </button>
+
+    <button
+      type="button"
+      onClick={() =>
+        setPaymentMethod('upi')
+      }
+      style={{
+        padding: '16px 24px',
+        borderRadius: '16px',
+        border:
+          paymentMethod === 'upi'
+            ? '2px solid #d4af37'
+            : '1px solid #374151',
+        background:
+          paymentMethod === 'upi'
+            ? '#d4af37'
+            : '#1f2937',
+        color:
+          paymentMethod === 'upi'
+            ? '#111'
+            : 'white',
+        cursor: 'pointer',
+        fontWeight: '700'
+      }}
+    >
+      Pay via QR
+    </button>
+
+  </div>
+
+  {paymentMethod === 'upi' && (
+
+    <div
+      style={{
+        marginTop: '30px',
+        textAlign: 'center'
+      }}
+    >
+
+      <img
+        src={qrImage}
+        alt="QR Code"
+        style={{
+          width: '260px',
+          borderRadius: '20px',
+          marginBottom: '20px'
+        }}
+      />
+
+      <p
+        style={{
+          color: '#cbd5e1',
+          fontSize: '1rem'
+        }}
+      >
+        Scan this QR code using Paytm,
+        PhonePe, Google Pay or any UPI app.
+      </p>
+
+    </div>
+
+  )}
+
+</div>
         </aside>
       </div>
     </div>
