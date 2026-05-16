@@ -23,8 +23,9 @@ const ProductDetail = () => {
   const product = location.state?.product;
 
   const [selectedSize, setSelectedSize] =
-    useState('UK 8');
+  useState('UK 8');
 
+const [quantity, setQuantity] =
   useState(1);
 
   if (!product) {
