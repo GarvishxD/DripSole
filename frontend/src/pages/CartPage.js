@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import PageBanner from '../components/Layout/PageBanner';
-import { getProductImage } from '../utils/productImages';
 const CartPage = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
