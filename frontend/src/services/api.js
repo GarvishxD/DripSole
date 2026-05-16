@@ -6,12 +6,14 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(
+
   (config) => {
 
     const token =
       localStorage.getItem('token');
 
     if (token) {
+
       config.headers.Authorization =
         `Bearer ${token}`;
     }
@@ -19,8 +21,13 @@ api.interceptors.request.use(
     return config;
   },
 
-  (error) => Promise.reject(error)
+  (error) => {
+
+    return Promise.reject(error);
+  }
 );
+
+// ================= AUTH =================
 
 export const authAPI = {
 
@@ -34,38 +41,26 @@ export const authAPI = {
     api.get('/auth/user'),
 };
 
+// ================= PRODUCTS =================
+
 export const productsAPI = {
 
-  getAll: (filters = {}) => {
-
-    const params =
-      new URLSearchParams(filters);
-
-    return api.get(
-      `/products?${params.toString()}`
-    );
-  },
+  getAll: () =>
+    api.get('/products'),
 
   getById: (id) =>
     api.get(`/products/${id}`),
 };
 
+// ================= ORDERS =================
+
 export const ordersAPI = {
 
-  create: (orderData) =>
-    api.post('/orders', orderData),
+  create: (data) =>
+    api.post('/orders', data),
 
   getUserOrders: () =>
     api.get('/orders'),
-
-  getAllOrders: () =>
-    api.get('/admin/orders'),
-
-  updateStatus: (id, statusData) =>
-    api.put(
-      `/admin/orders/${id}`,
-      statusData
-    ),
 };
 
 export default api;
