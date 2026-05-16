@@ -1,13 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL;
-
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL:
+    'https://dripsole.onrender.com',
 });
-
-// ================= TOKEN =================
 
 api.interceptors.request.use(
   (config) => {
@@ -26,8 +22,6 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ================= AUTH =================
-
 export const authAPI = {
 
   register: (userData) =>
@@ -39,8 +33,6 @@ export const authAPI = {
   getUser: () =>
     api.get('/auth/user'),
 };
-
-// ================= PRODUCTS =================
 
 export const productsAPI = {
 
@@ -57,8 +49,6 @@ export const productsAPI = {
   getById: (id) =>
     api.get(`/products/${id}`),
 };
-
-// ================= ORDERS =================
 
 export const ordersAPI = {
 

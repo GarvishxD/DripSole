@@ -47,8 +47,7 @@ const Header = () => {
 
   const [mobileMenu, setMobileMenu] =
     useState(false);
-const [search, setSearch] =
-  useState('');
+
   const [isMobile, setIsMobile] =
     useState(window.innerWidth <= 768);
 
@@ -124,32 +123,8 @@ const [search, setSearch] =
 >
 
         {/* ================= LOGO ================= */}
-<div
-  className="ds-search-wrapper"
-  style={{
-    flex: 1,
-    maxWidth: isMobile
-      ? '100%'
-      : '420px',
 
-    marginLeft:
-      isMobile ? '0' : '30px'
-  }}
->
 
- <input
-  type="text"
-  placeholder="Search products..."
-  className="ds-search-input"
-
-  value={search}
-
-  onChange={(e) =>
-    setSearch(e.target.value)
-  }
-/>
-
-</div>
         <Link
           to="/"
           style={{
