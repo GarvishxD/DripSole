@@ -502,14 +502,26 @@ const Header = () => {
                   setMobileMenu(false)
                 }
                 style={{
-                  textDecoration: 'none',
-                  color: '#fff',
-                  fontWeight: '700',
-                  fontSize: '1rem',
-                  padding: '14px',
-                  borderRadius: '14px',
-                  background: '#f9fafb'
-                }}
+  textDecoration: 'none',
+
+  color: '#111827',
+
+  fontWeight: '700',
+
+  fontSize: '1rem',
+
+  padding: '14px',
+
+  borderRadius: '14px',
+
+  background:
+    'rgba(255,255,255,0.92)',
+
+  border:
+    '1px solid rgba(0,0,0,0.08)',
+
+  transition: '0.3s ease'
+}}
               >
                 🛒 Cart ({totalItems})
               </Link>
@@ -520,14 +532,26 @@ const Header = () => {
                   setMobileMenu(false)
                 }
                 style={{
-                  textDecoration: 'none',
-                  color: '#fff',
-                  fontWeight: '700',
-                  fontSize: '1rem',
-                  padding: '14px',
-                  borderRadius: '14px',
-                  background: '#f9fafb'
-                }}
+  textDecoration: 'none',
+
+  color: '#111827',
+
+  fontWeight: '700',
+
+  fontSize: '1rem',
+
+  padding: '14px',
+
+  borderRadius: '14px',
+
+  background:
+    'rgba(255,255,255,0.92)',
+
+  border:
+    '1px solid rgba(0,0,0,0.08)',
+
+  transition: '0.3s ease'
+}}
               >
                 📦 Orders
               </Link>
