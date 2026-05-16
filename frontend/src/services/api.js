@@ -4,7 +4,9 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || '';
 
 // Create axios instance
 const api = axios.create({
-  baseURL: '/api'
+  baseURL:
+  process.env.REACT_APP_API_URL ||
+  'http://localhost:5000/api'
 });
 
 // Add auth token to requests
