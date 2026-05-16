@@ -115,16 +115,32 @@ const [quantity, setQuantity] =
           alignItems: 'center'
         }}
       >
-        <img
-          src={product.image}
-          alt={product.name}
-          style={{
-            width: '100%',
-            height: '650px',
-            objectFit: 'cover',
-            borderRadius: '25px'
-          }}
-        />
+       <img
+  src={product.image}
+  alt={product.name}
+  className="product-detail-image"
+  style={{
+    width: '100%',
+
+    maxWidth: '520px',
+
+    height:
+      window.innerWidth <= 768
+        ? '360px'
+        : '520px',
+
+    objectFit: 'cover',
+
+    borderRadius: '24px',
+
+    display: 'block',
+
+    margin: '0 auto',
+
+    boxShadow:
+      '0 10px 30px rgba(0,0,0,0.15)'
+  }}
+/>
 
         <div>
           <h1

@@ -428,19 +428,28 @@ body {
 @media (max-width: 480px) {
 
   .ds-product-grid {
-    grid-template-columns: 1fr;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 14px;
   }
 
   .ds-product-card {
     width: 100%;
   }
 
-  header {
-    padding: 14px !important;
+  .ds-product-card__img-wrap {
+    border-radius: 14px;
   }
 
-  header nav {
-    gap: 12px;
+  .ds-product-card__img {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  header {
+    padding: 14px !important;
   }
 
   .ds-search-input {
