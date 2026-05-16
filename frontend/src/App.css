@@ -239,3 +239,216 @@ select:focus {
       font-size: 1.8rem;
   }
 }
+/* ========================================
+   GLOBAL RESPONSIVE FIXES
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.ds-app-shell {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.ds-main {
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* ========================================
+   PRODUCT GRID
+======================================== */
+
+.ds-product-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.ds-product-card {
+  width: 100%;
+}
+
+.ds-product-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.ds-product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ========================================
+   GLOBAL RESPONSIVE FIXES
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.ds-app-shell {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.ds-main {
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* ========================================
+   PRODUCT GRID
+======================================== */
+
+.ds-product-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.ds-product-card {
+  width: 100%;
+}
+
+.ds-product-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.ds-product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ========================================
+   TABLET RESPONSIVE
+======================================== */
+
+@media (max-width: 992px) {
+
+  .ds-product-detail {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    padding: 20px !important;
+  }
+
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .ds-main {
+    padding: 0 14px;
+  }
+
+  header > div {
+    flex-direction: column;
+    gap: 20px !important;
+  }
+
+  header nav {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ds-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .ds-product-card__name {
+    font-size: 0.95rem;
+  }
+
+  .ds-product-card__price {
+    font-size: 0.9rem;
+  }
+
+  .ds-btn {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .ds-search-wrapper {
+    max-width: 100%;
+  }
+
+  .ds-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .ds-chip {
+    font-size: 0.9rem;
+  }
+
+}
+
+/* ========================================
+   SMALL MOBILE DEVICES
+======================================== */
+
+@media (max-width: 480px) {
+
+  .ds-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-product-card {
+    width: 100%;
+  }
+
+  header {
+    padding: 14px !important;
+  }
+
+  header nav {
+    gap: 12px;
+  }
+
+  .ds-search-input {
+    font-size: 0.9rem;
+  }
+
+  .ds-product-detail {
+    gap: 24px;
+  }
+
+}
