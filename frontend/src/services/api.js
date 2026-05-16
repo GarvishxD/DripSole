@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL:
-    'https://dripsole.onrender.com',
+    'https://dripsole-1.onrender.com',
 });
 
 api.interceptors.request.use(
